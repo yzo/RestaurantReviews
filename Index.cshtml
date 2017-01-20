@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+@using (Html.BeginForm("Find", "Home"))
+{
+    <div class="col-md-2">
+        Enter City Name 
+    </div>
+    <div class="col-md-2">
+       <input type="text" id="txtCityName" width="100" />
+    </div>
+    <div>
+        <input type = "button" id="btnFind" value = "Find Restaurant" />
+        <input type="button" id="btnAll" value="Show All Restaurants" />
+    </div>
+}
+
+</div>
+
+@section Scripts{
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btnFind").bind("click", function () {
+            var city = $("#txtCityName").val();
+            var qString = "?search=" + city;
+            window.location.href = "/Home/Find/" + qString;
+        })
+        $("#btnAll").bind("click", function () {
+            var qString = "?search=";
+            window.location.href = "/Home/Find/" + qString;
+        })
+    })
+ </script>
+}

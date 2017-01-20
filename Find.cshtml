@@ -1,0 +1,38 @@
+﻿@using Dining.Models
+
+@model IEnumerable<Restaurant>
+
+@{
+    ViewBag.Title = "Find";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-3 h3">
+            Restaurant Name
+        </div>
+        <div class="col-md-4 h3">
+            Location
+        </div>
+        <div class=" h3">
+            Reviews
+        </div>
+    </div>
+    @foreach (var r in Model)
+    {
+        <div class="row ">
+            <div class="col-md-3">
+                @r.name
+            </div>
+            <div class="col-md-4">
+                @r.city , @r.state
+            </div>
+             <div class="col-md-3">
+                    @Html.ActionLink("Read Reviews", "Reviews", new { restaurantId = r.restaurant_Id })
+                </div>
+        </div>
+    }
+    <a href="/Home/CreateRestaurant"><input type="button" value="Create Restaurant" /></a>
+    @Html.ActionLink("Back to Home", "Index")
+</div>

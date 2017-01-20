@@ -1,0 +1,58 @@
+﻿@model Dining.Models.Restaurant_Review
+
+@{
+    ViewBag.Title = "DeleteReview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteReview</h2>
+@using (Html.BeginForm("DeleteReview", "Home", FormMethod.Post))
+{
+
+<div>
+    <h4>Restaurant_Review</h4>
+    <hr />
+    @Html.HiddenFor(model => model.Restaurant_Review_Id)
+
+@Html.HiddenFor(model => model.restaurant_Id)
+
+@Html.HiddenFor(model => model.user_name)
+                @Html.HiddenFor(model => model.rating)
+                @Html.HiddenFor(model => model.comment)
+
+
+    <div class="form-group">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.user_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.comment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.comment)
+            </dd>
+
+        </dl>
+        </div>
+    </div>
+<p>
+    <input type="submit" value="Confirm Delete" />
+    @Html.ActionLink("Back to Home", "Index")
+
+</p>
+}

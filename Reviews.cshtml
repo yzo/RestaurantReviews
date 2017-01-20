@@ -1,0 +1,57 @@
+﻿@using Dining.Models
+
+@model Restaurant
+
+
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reviews</h2>
+
+<div>
+    <div class="row">
+        <div class="col-md-3 h3">
+            Reviewer
+        </div>
+        <div class="col-md-1 h3">
+            Rating
+        </div>
+        <div class="col-md-3 h3">
+            Comment
+        </div>
+        <div class="text-left h3">
+            Deletex
+        </div>
+    </div>
+    @foreach (var r in Model.reviews)
+    {
+        <div class="row ">
+            <div class="col-md-3">
+                @r.user_name
+            </div>
+            <div class="col-md-1">
+                @r.rating
+            </div>
+            <div class="col-md-3">
+                @r.comment
+            </div>
+            <div>
+                @Html.ActionLink("Delete", "DeleteReview", new { id = r.Restaurant_Review_Id })
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Show All Reviews", "AllReviewsByUser", new { id = r.Restaurant_Review_Id })
+            </div>
+        </div>
+    }
+    
+@using (Html.BeginForm("AddReview", "Home", new { id = Model.restaurant_Id }, FormMethod.Get ))
+{
+    <div>
+        <input type="Submit" id="btnFind" value="Add Review" />
+        @Html.ActionLink("Back to Home", "Index")
+    </div>
+}
+
+</div>
+
