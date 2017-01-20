@@ -1,0 +1,41 @@
+﻿@using Dining.Models
+
+@model IEnumerable<ReviewWithRestaurantNameVM>
+
+@{
+    ViewBag.Title = "All Reviews By " + ViewBag.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Name) Reviews</h2>
+
+<d1>
+    <hr />
+    <div class="row">
+        <div class="col-md-3 h3">
+            Restaurant Name
+        </div>
+        <div class="col-md-2 h3">
+            Rating
+        </div>
+        <div class="col-md-4 h3">
+            Comment
+        </div>
+    </div>
+        @foreach (var r in Model)
+        {
+            <div class="row ">
+                <div class="col-md-3">
+                    @r.restaurant_name
+                </div>
+                <div class="col-md-2">
+                    @r.rating
+                </div>
+                <div class="col-md-4">
+                    @r.comment
+                </div>
+            </div>
+        }
+<p>
+    @Html.ActionLink("Back to Home", "Index")
+</p>
